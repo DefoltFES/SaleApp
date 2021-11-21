@@ -4,6 +4,9 @@
              xmlns:local="clr-namespace:SaleApp"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <SolidColorBrush x:Key="MainColor" Color="#CEFFF9"></SolidColorBrush>
+        <SolidColorBrush x:Key="SecondColor" Color="#00CC76"></SolidColorBrush>
+        <local:MaterialConvertor  x:Key="MaterialConvertor"></local:MaterialConvertor>
+        <BitmapImage x:Key="DefoltImage" UriSource="picture.png"></BitmapImage>
     </Application.Resources>
 </Application>

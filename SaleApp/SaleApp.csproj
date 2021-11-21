@@ -34,9 +34,21 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Лопушок.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +67,40 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AppModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EditProductWindow.xaml.cs">
+      <DependentUpon>EditProductWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Guild.cs">
+      <DependentUpon>AppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Material.cs">
+      <DependentUpon>AppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialConvertor.cs" />
+    <Compile Include="Product.cs">
+      <DependentUpon>AppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Production.cs">
+      <DependentUpon>AppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypeMaterial.cs">
+      <DependentUpon>AppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypeProduct.cs">
+      <DependentUpon>AppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypeUnit.cs">
+      <DependentUpon>AppModel.tt</DependentUpon>
+    </Compile>
+    <Page Include="EditProductWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -62,6 +108,16 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AppModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -86,6 +142,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="AppModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AppModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="AppModel.edmx.diagram">
+      <DependentUpon>AppModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -93,6 +157,56 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Лопушок.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Лопушок.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="picture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AppModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AppModel.Context.cs</LastGenOutput>
+      <DependentUpon>AppModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="AppModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AppModel.edmx</DependentUpon>
+      <LastGenOutput>AppModel.cs</LastGenOutput>
+    </Content>
+    <Resource Include="products\paper_0.jpeg" />
+    <Resource Include="products\paper_1.jpeg" />
+    <Resource Include="products\paper_10.jpeg" />
+    <Resource Include="products\paper_11.jpeg" />
+    <Resource Include="products\paper_12.jpeg" />
+    <Resource Include="products\paper_13.jpeg" />
+    <Resource Include="products\paper_14.jpeg" />
+    <Resource Include="products\paper_15.jpeg" />
+    <Resource Include="products\paper_16.jpeg" />
+    <Resource Include="products\paper_17.jpeg" />
+    <Resource Include="products\paper_18.jpeg" />
+    <Resource Include="products\paper_19.jpeg" />
+    <Resource Include="products\paper_2.jpeg" />
+    <Resource Include="products\paper_20.jpeg" />
+    <Resource Include="products\paper_21.jpeg" />
+    <Resource Include="products\paper_22.jpeg" />
+    <Resource Include="products\paper_23.jpeg" />
+    <Resource Include="products\paper_24.jpeg" />
+    <Resource Include="products\paper_25.jpeg" />
+    <Resource Include="products\paper_3.jpeg" />
+    <Resource Include="products\paper_4.jpeg" />
+    <Resource Include="products\paper_5.jpeg" />
+    <Resource Include="products\paper_6.jpeg" />
+    <Resource Include="products\paper_7.jpeg" />
+    <Resource Include="products\paper_8.jpeg" />
+    <Resource Include="products\paper_9.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

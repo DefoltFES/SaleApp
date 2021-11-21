@@ -5,8 +5,66 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SaleApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Лопушок" Width="1280"  Loaded="MainWindow_OnLoaded">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <StackPanel Margin="20" VerticalAlignment="Top" Width="100" Height="100">
+                <Image Source="Лопушок.png" ></Image>
+            </StackPanel>
+            <TextBlock FontFamily="Gabriola" Foreground="{StaticResource SecondColor}" VerticalAlignment="Center" FontSize="70">Лопушок</TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Vertical"  CanHorizontallyScroll="True"  Margin="20,20,20,0" Grid.Row="1">
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox TextChanged="Search_OnTextChanged" x:Name="Search" FontFamily="Gabriola"  Grid.Column="0" Padding="10" BorderBrush="{StaticResource SecondColor}" Foreground="Black" FontSize="20" ></TextBox>
+                <ComboBox x:Name="Sort" IsEditable="True"  IsReadOnly="True" SelectionChanged="Sort_OnSelectionChanged" Padding="10,0,0,0" FontFamily="Gabriola" BorderThickness="1" BorderBrush="{StaticResource SecondColor}" Margin="10,0,0,0" FontSize="20"   Grid.Column="1" Background="Transparent" Foreground="Black" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" SelectedIndex="0" ></ComboBox>
+                <ComboBox x:Name="Type" IsEditable="True" IsReadOnly="True" SelectionChanged="Sort_OnSelectionChanged" Padding="10,0,0,0" BorderThickness="1" BorderBrush="{StaticResource SecondColor}" FontFamily="Gabriola" Margin="10,0,0,0" FontSize="20" DisplayMemberPath="name"   Grid.Column="2" Background="Transparent" Foreground="Black" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"  SelectedIndex="0" ></ComboBox>
+                <Button Grid.Column="3" Click="AddProduct" Margin="10,0,0,0" Background="Transparent" FontFamily="Gabriola" FontSize="20" BorderBrush="{StaticResource SecondColor}"> Добавить продукт</Button>
+            </Grid>
+            <ListView x:Name="ListProducts"  MouseDoubleClick="ListProducts_MouseDoubleClick"   VerticalAlignment="Stretch"  Margin="0,20,0,0" Height="390" HorizontalContentAlignment="Stretch" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="10"  BorderThickness="2,2,2,2"  BorderBrush="{StaticResource SecondColor}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Width="50" Height="50" Stretch="Fill" Source="{Binding image,TargetNullValue={StaticResource DefoltImage}}" ></Image>
+                                <StackPanel Grid.Column="1" Margin="20,0,0,0">
+                                    <TextBlock FontFamily="Gabriola" FontSize="20">
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} | {1}">
+                                                <Binding Path="TypeProduct.name"/>
+                                                <Binding Path="name"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                    <TextBlock FontFamily="Gabriola" FontSize="14" Text="{Binding article, StringFormat=Артикул: {0}}"/>
+                                    <TextBlock FontFamily="Gabriola" FontSize="14" Text="{Binding Productions,Converter={StaticResource MaterialConvertor}}"></TextBlock>
+                                </StackPanel>
+                                <TextBlock Grid.Column="2" HorizontalAlignment="Right" FontSize="20" FontFamily="Gabriola" Text="{Binding min_price_agent}"></TextBlock>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        </StackPanel>
+        <StackPanel Grid.Row="2" Margin="0,20,0,0">
+            <Button></Button>
+        </StackPanel>
+
     </Grid>
 </Window>

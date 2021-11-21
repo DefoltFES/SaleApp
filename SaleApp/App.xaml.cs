@@ -13,5 +13,6 @@ namespace SaleApp
     /// </summary>
     public partial class App : Application
     {
+        public static SaleDatabaseEntities dbContext=new SaleDatabaseEntities();
     }
 }
